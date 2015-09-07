@@ -1,0 +1,66 @@
+
+public class Projectile {
+	
+	private double initialVelocity;
+	private double launchAngle;
+	private double verticalComponent;
+	private double horizontalComponent;
+	private double travelTime;
+	private double distanceTraveled;
+	
+	private static final int gravity = 10; // gravitational acceleration in meters/sec^2
+	
+	public Projectile() {
+		initialVelocity = 0;
+		launchAngle = 0;
+	}
+	
+	public Projectile (double velocity, double angle) {
+		if (velocity >= 0) {
+			initialVelocity = velocity;
+		}
+		
+		if ((angle >= 0) && (angle <= 90)) {
+			launchAngle = angle;
+		}
+		
+	}
+	
+	public void setInitialVelocity(double velocity) {
+		if (velocity > 0) {
+			initialVelocity = velocity;
+		}
+	}
+	
+	public double getInitialVelocity() {
+		return initialVelocity;
+	}
+	
+	public void setLaunchAngle(double angle) {
+		if ((angle >= 0) && (angle <= 90)) {
+			launchAngle = angle;
+		}
+	}
+	
+	public double getLaunchAngle() {
+		return launchAngle;
+	}
+	
+	public double getVerticalComponent() {
+		return (initialVelocity * Math.sin(Math.toRadians(launchAngle)));
+	}
+	
+	
+	public double getHorizontalComponent() {
+		return (getInitialVelocity() * Math.cos(Math.toRadians(launchAngle)));
+	}
+	
+	public double getTravelTime() {
+		return ((2 * verticalComponent)/gravity);
+	}
+	
+	public double getDistanceTraveled() {
+		return (getHorizontalComponent() * getTravelTime());
+	}
+	
+}

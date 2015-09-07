@@ -1,0 +1,31 @@
+
+public class Motorcycle extends Vehicle {
+	
+	private float engineSize;
+	
+	public Motorcycle(String manufac, String mod, int ddmmyyyy, float size) {
+		super(manufac, mod, ddmmyyyy);
+		setEngineSize(size);
+	}
+	
+	public void setEngineSize(float size) {
+		engineSize = size;
+	}
+	
+	public float getEngineSize() {
+		return engineSize;
+	}
+
+	@Override
+	float returnTax() {
+		// TODO Auto-generated method stub
+		int tax = 0;
+		
+		if (engineSize <= 150) {
+			
+		}
+		
+		return tax;
+	}
+
+}

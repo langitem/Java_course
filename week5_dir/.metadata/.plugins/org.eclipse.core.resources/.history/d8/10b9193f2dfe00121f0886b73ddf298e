@@ -1,0 +1,8 @@
+
+public class VanTest {
+	
+	public static void main(String[] args) {
+		Van myVan = new Van("Ford", "E-150", 02251972, 3000);
+	}
+
+}

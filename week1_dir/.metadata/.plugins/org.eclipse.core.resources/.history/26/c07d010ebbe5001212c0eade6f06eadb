@@ -1,0 +1,9 @@
+
+public class DQ1_test {
+	
+	public static void main(String[] args) {
+		
+		DQ1 myDQ1 = new DQ1();
+	}
+
+}

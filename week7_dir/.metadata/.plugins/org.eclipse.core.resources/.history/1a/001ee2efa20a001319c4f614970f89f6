@@ -1,0 +1,154 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JPanel;
+import java.lang.Runnable;
+
+public class BlueBallPanel extends JPanel implements Runnable {
+	private int diameter = 10;
+	private int x = 1;
+	private int y = 1;
+	private int changeInX = 1;
+	private int changeInY = 1;
+	private final int MAX = 490;
+	
+	// constructor
+	public BlueBallPanel() {
+		MouseHandler handler = new MouseHandler();
+		addMouseListener( handler );
+	}
+	
+	// draw ball with specified diameter
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.setColor(Color.BLUE);
+		g.fillOval(x, y, diameter, diameter);
+		//Thread blueBallThread = new Thread(this);
+		//blueBallThread.start();
+	}
+	
+	// validate and set diameter, then repaint
+	public void setDiameter(int newDiameter) {
+		// if diameter is invalid, default to 10
+		diameter = (newDiameter >= 0 ? newDiameter : 10);
+		repaint(); // repaint panel
+	}
+	
+	/*
+	// use by layout manager to determine preferred size
+	public Dimension getPreferredSize() {
+		return new Dimension(200, 200);
+	}
+	*/
+	
+	private void moveBall() {
+		Thread blueBallThread = new Thread(this);
+		blueBallThread.start();
+	}
+
+	@Override
+	public void run() {
+		String xDirection = "right";
+		String yDirection = "down";
+		// Boolean justBounced = true;
+		Boolean xJustChangedDirection = false;
+		Boolean yJustChangedDirection = false;
+		
+		while (true) {
+			try {
+				Thread.sleep( 20 );
+			} catch ( Exception e ) {
+				
+			}
+			
+			if (xDirection.contentEquals("right")) {
+				x += changeInX;
+			} else {
+				x -= changeInX;
+			}
+			
+			if (yDirection.contentEquals("down")) {
+				y += changeInY;
+			} else {
+				y -= changeInY;
+			}
+			
+			if (xJustChangedDirection) {
+				if (xDirection.contentEquals("right")) {
+					xDirection = "left";
+				} else {
+					xDirection = "right";
+				}
+			}
+			
+			if (yJustChangedDirection) {
+				if (yDirection.contentEquals("down")) {
+					yDirection = "up";
+				} else {
+					yDirection = "down";
+				}
+			}
+			
+			repaint();
+			
+			if (x < MAX) {
+				xDirection = "right";
+				xJustChangedDirection = false;
+			} else {
+				xDirection = "left";
+				xJustChangedDirection = true;
+			}
+			
+			if (y < MAX ) {
+				yDirection = "down";
+				yJustChangedDirection = false;
+			} else {
+				yDirection = "up";
+				yJustChangedDirection = true;
+			}
+			
+
+			
+			System.out.printf("%d, %d\n", x, y);
+			System.out.printf("%s, %s\n", xDirection, yDirection);
+			
+			//repaint();
+		} // end of while loop
+		
+	} // end of run method
+	
+	
+	private class MouseHandler implements MouseListener {
+		public void mouseClicked(MouseEvent event) {
+			System.out.println("mouseclicked");
+			moveBall();
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+	} // end of MouseHandler class
+
+}

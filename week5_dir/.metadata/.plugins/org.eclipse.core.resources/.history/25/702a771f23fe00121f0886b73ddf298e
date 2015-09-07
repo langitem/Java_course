@@ -1,0 +1,19 @@
+
+public class Motorcycle extends Vehicle {
+	
+	private float engineSize;
+	
+	public Motorcycle(String manufac, String mod, int ddmmyyyy, float size) {
+		super(manufac, mod, ddmmyyyy);
+		setEngineSize(size);
+	}
+	
+	public void setEngineSize(float size) {
+		engineSize = size;
+	}
+	
+	public float getEngineSize() {
+		return engineSize;
+	}
+
+}

@@ -1,0 +1,30 @@
+
+public class Van extends Vehicle {
+	
+	private float weight;
+	
+	public Van (String manufac, String mod, int day, int month, int year, float w ) {
+		super(manufac, mod, day, month, year);
+		setWeight(w);
+	}
+	
+	public void setWeight(float w) {
+		if (w > 0) {
+			weight = w;
+		}
+	}
+	
+	public float getWeight() {
+		return weight;
+	}
+	
+	@Override
+	public float returnTax() {
+		if (weight < 3500) {
+			return 165;
+		} else {
+			return 190;
+		}
+	} // end of returnTax method
+
+}

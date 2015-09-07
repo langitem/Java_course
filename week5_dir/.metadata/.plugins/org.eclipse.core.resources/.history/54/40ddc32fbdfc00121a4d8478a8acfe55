@@ -1,0 +1,31 @@
+
+public class FullAddress extends ShortAddress {
+	
+	private int houseNumber;
+	private String street1Name;
+	private String street2Name;
+	private String cityName;
+	
+	// Constructor
+	public FullAddress(String first, String second, int phone, int houseNum, String street1, String street2, String city) {
+		super(first, second, phone);
+		houseNumber = houseNum;
+		street1Name = street1;
+		street2Name = street2;
+		cityName = city;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s",
+				"First Name", firstName,
+				"Second Name", secondName,
+				"House number", houseNumber,
+				"Street1", streetName1,
+				"Street2", streetName2,
+				"City", cityName,
+				"Phone number", phoneNumber
+				);
+	}
+
+}

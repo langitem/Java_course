@@ -1,0 +1,11 @@
+
+public class GradeBook {
+	
+	private String courseName; // courseName for this GradeBook
+	
+	// method to set the course name
+	public void setCourseName( String name ) {
+		
+	}
+
+}

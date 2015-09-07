@@ -1,0 +1,64 @@
+// Emanuel Langit
+// emanuel.langit@my.ohecampus.com
+// CKIT-510
+// Assignment2App.java
+// Application class class
+// Week 2 Hand-in assignment
+// July 17, 2013
+
+import javax.swing.JOptionPane;
+
+public class Assignment2App {
+	
+	private float width = 0;
+	private float length = 0;
+	private float depth = 0;
+	private float volume = 0;
+	
+	SwimmingPool myPool = new SwimmingPool(width, length, depth); // create instance of SwimmingPool
+	
+	// method to display welcome message
+	public void greeting() {
+		JOptionPane.showMessageDialog(null, "Welcome! This program will ask you for dimensions of a swimming pool\n" +
+									  "and give you its volume and the time required to fill the pool.");
+	}
+	
+	// method to get pool dimensions from user
+	public void getPoolDimensions() {
+		
+		String widthString = JOptionPane.showInputDialog(null, "What is the width of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		width = Float.parseFloat(widthString);
+		myPool.setWidth(width);
+		
+		String lengthString = JOptionPane.showInputDialog(null, "What is the length of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		length = Float.parseFloat(lengthString);
+		myPool.setLength(length);
+		
+		String depthString = JOptionPane.showInputDialog(null, "What is the depth of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		depth = Float.parseFloat(depthString);
+		myPool.setDepth(depth);
+			
+	} // end of getPoolDimensions method
+	
+	// method to show volume of pool
+	public void displayVolume() {
+		
+		volume = myPool.getVolume();
+		String volumeMessage = "The volume of the pool is: " + String.format("%.2f", volume) + " liters.";
+		
+		JOptionPane.showMessageDialog(null, volumeMessage, "Volume", JOptionPane.INFORMATION_MESSAGE);
+		
+	} // end of displayVolume
+	
+	//method to display time required to fill the pool
+	public void displayFillTime() {
+		
+		double fillTime = volume / (2.5 * 3600);
+		String fillMessage =	"The required time to fill the pool\n" + "assuming a rate of 2.5 liters/second is: " +
+								String.format("%.2f", fillTime) + " hours.";
+		
+		JOptionPane.showMessageDialog(null, fillMessage, "Required Fill Time", JOptionPane.INFORMATION_MESSAGE);
+		
+	} // end of displayFillTime method
+
+}

@@ -1,0 +1,25 @@
+import java.math.BigDecimal;
+
+public class Dollar {
+	
+	BigDecimal dollarAmount;
+	
+	public Dollar(BigDecimal amount) {
+		dollarAmount = amount;
+	}
+	
+	public void setDollarAmount(BigDecimal amount) {
+		dollarAmount = amount;
+	}
+
+	public BigDecimal getDollarAmount() {
+		return dollarAmount;
+	}
+
+	public BigDecimal getGbpAmount() {
+		BigDecimal multiplicand = new BigDecimal(1.9);
+		BigDecimal gbAmount = dollarAmount.multiply(multiplicand );
+		return gbAmount;
+	}
+
+}

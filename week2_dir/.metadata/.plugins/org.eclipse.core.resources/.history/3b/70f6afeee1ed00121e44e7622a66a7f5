@@ -1,0 +1,8 @@
+
+public class swimmingPool {
+	
+	int width;
+	int length;
+	int depth;
+
+}

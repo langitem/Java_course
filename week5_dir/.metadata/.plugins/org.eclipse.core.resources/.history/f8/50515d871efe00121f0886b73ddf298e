@@ -1,0 +1,19 @@
+
+public class Van extends Vehicle {
+	
+	private float weight;
+	
+	public Van (String manufac, String mod, int ddmmyyyy, float w ) {
+		super(manufac, mod, ddmmyyyy);
+		setWeight(w);
+	}
+	
+	public void setWeight(float w) {
+		weight = w;
+	}
+	
+	public float getWeight() {
+		return weight;
+	}
+
+}

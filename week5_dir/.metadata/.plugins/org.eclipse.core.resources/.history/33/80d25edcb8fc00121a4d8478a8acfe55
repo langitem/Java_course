@@ -1,0 +1,6 @@
+
+public class FullAddress extends ShortAddress {
+	
+	int houseNumber;
+
+}

@@ -1,0 +1,411 @@
+import javax.swing.ImageIcon;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+
+public class Assignment5App extends JFrame {
+	
+	// vehicle selection components:
+	private JPanel vehicleSelectionJPanel;
+	private JComboBox vehicleSelectionJComboBox; // combo box to hold vehicle selection
+	private JLabel iconJLabel;
+	private JLabel selectVehicleJLabel = new JLabel("Select vehicle type: ", SwingConstants.CENTER);
+	
+	// components for panel where user enters text:
+	private JPanel vehicleTextDataJPanel;
+	private JLabel manufacturerJLabel = new JLabel("Manufacturer: ", SwingConstants.RIGHT);	
+	private JTextField manufacturerJTextField = new JTextField(20);
+	private JLabel modelJLabel = new JLabel("Model: ", SwingConstants.RIGHT);	
+	private JTextField modelJTextField = new JTextField(20);
+	private JLabel dayJLabel = new JLabel("Day of registration: ", SwingConstants.RIGHT);	
+	private JTextField dayJTextField = new JTextField(20);
+	private JLabel monthJLabel = new JLabel("Month of registration (1-12): ", SwingConstants.RIGHT);	
+	private JTextField monthJTextField = new JTextField(20);
+	private JLabel yearJLabel = new JLabel("Year of registration: ", SwingConstants.RIGHT);	
+	private JTextField yearJTextField = new JTextField(20);
+	private JLabel weightJLabel = new JLabel("Vehicle weight (kg): ", SwingConstants.RIGHT);	
+	private JTextField weightJTextField = new JTextField(20);
+	private JLabel engineSizeJLabel = new JLabel("Engine size (cc): ", SwingConstants.RIGHT);	
+	private JTextField engineSizeJTextField = new JTextField(20);
+	private JLabel emissionJLabel = new JLabel("Vehicle emissions (g/km): ", SwingConstants.RIGHT);	
+	private JTextField emissionJTextField = new JTextField(20);
+	
+	// buttons to either calculate tax or cancel program
+	private JButton calculateJButton = new JButton("Calculate Tax");
+	private JButton cancelJButton = new JButton("Cancel");
+	
+	private static final String[] vehicles = {"Car", "Van", "Motorcycle"};
+	private Icon[] icons = {
+		new ImageIcon( getClass().getResource("Car.gif")),
+		new ImageIcon( getClass().getResource("Van.gif")), 
+		new ImageIcon( getClass().getResource("Motorcycle.gif"))
+	};
+	
+	private String vehicleType = "Car"; // default
+	
+	// constructor for Assignment5App
+	public Assignment5App() {
+		super("Assignment 5");
+		setLayout( new FlowLayout() ); // set frame layout
+		
+		vehicleSelectionJComboBox = new JComboBox(vehicles); // set up JComboBox
+		vehicleSelectionJComboBox.setMaximumRowCount(3); // display three rows
+	    
+		vehicleSelectionJComboBox.addItemListener(
+			new ItemListener() {// anonymous inner class
+				
+				// handle JComboBox event
+				public void itemStateChanged(ItemEvent event) {
+					// determine whether item selected
+					if (event.getStateChange() == ItemEvent.SELECTED) {
+						//System.out.println(event.getItem().toString());
+						setInterface(event.getItem().toString());
+						iconJLabel.setIcon(icons[vehicleSelectionJComboBox.getSelectedIndex()]);
+					}
+				}
+			} // end anonymous inner class
+		); // end call to addItemListener
+		
+		//add(vehicleSelectionJComboBox);
+	    iconJLabel = new JLabel(icons[0]);
+	    //add(iconJLabel);
+	    
+	    
+	    // build vehicle selection panel:
+	    vehicleSelectionJPanel = new JPanel();
+	    vehicleSelectionJPanel.setLayout(new GridLayout(1, 3)); // 1 row, 3 columns
+	    vehicleSelectionJPanel.add(selectVehicleJLabel);
+	    vehicleSelectionJPanel.add(vehicleSelectionJComboBox);
+	    vehicleSelectionJPanel.add(iconJLabel);
+	    
+	    // build vehicleTextDataJPanel:
+	    
+	    // add JPanels and buttons to JFrame:
+	    vehicleTextDataJPanel = new JPanel();
+	    vehicleTextDataJPanel.setLayout(new GridLayout(9, 2));
+	    vehicleTextDataJPanel.add(manufacturerJLabel);
+	    vehicleTextDataJPanel.add(manufacturerJTextField);
+	    vehicleTextDataJPanel.add(modelJLabel);
+	    vehicleTextDataJPanel.add(modelJTextField);
+	    vehicleTextDataJPanel.add(dayJLabel);
+	    vehicleTextDataJPanel.add(dayJTextField);
+	    vehicleTextDataJPanel.add(monthJLabel);
+	    vehicleTextDataJPanel.add(monthJTextField);
+	    vehicleTextDataJPanel.add(yearJLabel);
+	    vehicleTextDataJPanel.add(yearJTextField);
+	    vehicleTextDataJPanel.add(weightJLabel);
+	    weightJTextField.setEditable(false); // default because car is default
+	    vehicleTextDataJPanel.add(weightJTextField);
+	    vehicleTextDataJPanel.add(engineSizeJLabel);
+	    vehicleTextDataJPanel.add(engineSizeJTextField);
+	    vehicleTextDataJPanel.add(emissionJLabel);
+	    vehicleTextDataJPanel.add(emissionJTextField);
+	    calculateJButton.setActionCommand("CALCULATE TAX");
+	    vehicleTextDataJPanel.add(calculateJButton);
+	    cancelJButton.setActionCommand("CANCEL");
+	    vehicleTextDataJPanel.add(cancelJButton);
+	    
+	    add(vehicleSelectionJPanel);
+	    add(vehicleTextDataJPanel);
+	    
+	 // Register button handler for event handling
+	 ButtonHandler handler = new ButtonHandler();
+	 calculateJButton.addActionListener(handler);
+	 cancelJButton.addActionListener(handler);
+	 
+	} // end constructor
+	
+	private void setInterface(String vehicleType) {
+		manufacturerJTextField.setEditable(true);
+		modelJTextField.setEditable(true);
+		dayJTextField.setEditable(true);
+		monthJTextField.setEditable(true);
+		yearJTextField.setEditable(true);
+		weightJTextField.setEditable(true);
+		engineSizeJTextField.setEditable(true);
+		emissionJTextField.setEditable(true);
+
+		if (vehicleType.contentEquals("Car")) {
+			weightJTextField.setEditable(false);
+		} else if (vehicleType.contentEquals("Van")) {
+			engineSizeJTextField.setEditable(false);
+			emissionJTextField.setEditable(false);
+		} else if (vehicleType.contentEquals("Motorcycle")) {
+			weightJTextField.setEditable(false);
+			emissionJTextField.setEditable(false);
+		}
+		
+		this.vehicleType = vehicleType;
+	} // end of setInterface method
+
+	// private inner class for button event handling
+	private class ButtonHandler implements ActionListener {
+		
+		public void actionPerformed(ActionEvent event) {
+
+			if (event.getActionCommand().equals("CALCULATE TAX")) {
+				//System.out.println("calculate");
+				//System.out.println(vehicleType);
+				
+				// use trim method to remove leading and trailing white spaces from JTextFields
+				collectTextFromTextFields(vehicleType);
+				
+			} else if (event.getActionCommand().equals("CANCEL")) {
+				System.exit(0);
+			}
+		} // end of actionPeformed method
+	} // end of ButtonHandler class
+	
+	private void collectTextFromTextFields(String vehicleType) {
+		String manufacturerString = manufacturerJTextField.getText().trim();
+		String modelString = modelJTextField.getText().trim();
+		String dayString = dayJTextField.getText().trim();
+		String monthString = monthJTextField.getText().trim();
+		String yearString = yearJTextField.getText().trim();
+		String weightString = weightJTextField.getText().trim();
+		String engineSizeString = engineSizeJTextField.getText().trim();
+		String emissionString = emissionJTextField.getText().trim();
+		
+		if (vehicleType.contentEquals("Car")) {
+			if (isAllInputValid(vehicleType, manufacturerString, modelString, dayString,
+								monthString, yearString, engineSizeString, emissionString)) {
+				
+				displayCarInfo(manufacturerString, modelString, dayString, monthString, yearString, engineSizeString, emissionString);
+				
+			}
+			
+		} else if (vehicleType.contentEquals("Van")) {
+			if (isAllInputValid(vehicleType, manufacturerString, modelString, dayString,
+								monthString, yearString, weightString)) {
+				
+				displayVanInfo(manufacturerString, modelString, dayString, monthString, yearString, weightString);
+				
+			}
+			
+		} else if (vehicleType.contentEquals("Motorcycle")) {
+			if (isAllInputValid(vehicleType, manufacturerString, modelString, dayString,
+					monthString, yearString, engineSizeString)) {
+				
+				displayMotorCycleInfo(manufacturerString, modelString, dayString, monthString, yearString, engineSizeString);
+	
+			}
+		}
+		
+	} // end of collectTextFromTextFields method
+	
+	// method to check if all inputs are valid for car, takes 8 arguments
+	private boolean isAllInputValid(String vehicleType, String manufacturer, String model,
+									String day, String month, String year, String engineSize, String emissions) {
+		boolean result = false;
+		boolean anyFieldsEmpty = false;
+		boolean dateValid = false;
+		boolean engineSizeValid = false;
+		boolean emissionsValid = false;
+		String errorMessage = "";
+		
+		// check if there are any empty fields
+		if ((vehicleType.isEmpty()) || (manufacturer.isEmpty()) || (model.isEmpty()) || (day.isEmpty()) || 
+				(month.isEmpty()) || (year.isEmpty()) || (engineSize.isEmpty()) || (emissions.isEmpty())) {
+			anyFieldsEmpty = true;
+			errorMessage += "There are missing fields.\n";
+		} else {
+			anyFieldsEmpty = false;
+		} // end of checking for empty fields
+		
+		// check if date fields are valid:
+		if (isDateValid(day, month, year) == false) {
+			dateValid = false;
+			errorMessage += "Date entered is invalid.\n";
+		} else {
+			dateValid = true;
+		}
+		
+		// check if engine size field is valid:
+		try {
+			float engineSizeFloat = Float.parseFloat(engineSize);
+			if (engineSizeFloat > 0) {
+				engineSizeValid = true;
+			} else {
+				errorMessage += "Engine size is invalid\n";
+			}
+		} catch(NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			errorMessage += "Engine size is invalid\n";
+		}
+		
+		
+		// check if emissions field is valid:
+		try {
+			int emissionsInt = Integer.parseInt(emissions);
+			if (emissionsInt >= 0) {
+				emissionsValid = true;
+			} else {
+				errorMessage += "Emissions entered is invalid\n";
+			}
+		} catch(NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			errorMessage += "Emissions entered is invalid\n";
+		}
+		
+		if ((anyFieldsEmpty == false) && (dateValid) && (engineSizeValid) && (emissionsValid)) {
+			result = true;
+		} else {
+			displayInvalidInputMsg(errorMessage);
+			result = false;
+		}
+		
+		return result;
+	} // end of isAllInputValid method for car
+	
+	// method to check if all inputs are valid for vans and motorcycles, takes 7 arguments
+	private boolean isAllInputValid(String vehicleType, String manufacturer, String model,
+									String day, String month, String year, String lastTextField) {
+		boolean result = false;
+		boolean anyFieldsEmpty = false;
+		boolean dateValid = false;
+		boolean lastArgumentValid = false;
+		String lastArgument = "";
+		String errorMessage = "";
+		
+		if (vehicleType.contentEquals("Van")) {
+			lastArgument = "Weight";
+		} else if (vehicleType.contentEquals("Motorcycle")) {
+			lastArgument = "Engine size";
+		}
+		
+		// check if there are any empty fields
+		if ((vehicleType.isEmpty()) || (manufacturer.isEmpty()) || (model.isEmpty()) || (day.isEmpty()) || 
+				(month.isEmpty()) || (year.isEmpty()) || (lastTextField.isEmpty())) {
+			anyFieldsEmpty = true;
+			errorMessage += "There are missing fields.\n";
+			System.out.println("missing fields");
+		} else {
+			anyFieldsEmpty = false;
+		} // end of checking for empty fields
+		
+		// check if date fields are valid:
+		if (isDateValid(day, month, year) == false) {
+			dateValid = false;
+			errorMessage += "Date entered is invalid.\n";
+		} else {
+			dateValid = true;
+		}
+		
+		// check if last argument is a float
+		try {
+			float lastArgumentFloat = Float.parseFloat(lastTextField);
+			if (lastArgumentFloat > 0) {
+				lastArgumentValid = true;
+			} else {
+				errorMessage += String.format("%s %s\n", lastArgument, " is invalid.");
+				System.out.println("last argument < 0");
+			}
+		} catch(NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			errorMessage += String.format("%s %s\n", lastArgument, " is invalid.");
+			System.out.println("last argument is not a float");
+		} // end of checking if last argument is a float
+		
+		if ((anyFieldsEmpty == false) && (dateValid) && (lastArgumentValid)) {
+			result = true;
+		} else {
+			displayInvalidInputMsg(errorMessage);
+			result = false;
+		}
+		
+		return result;
+	} // end of isAllInputValid (for vans and motorcycles)
+	
+	// method to check if date is valid
+	private boolean isDateValid(String day, String month, String year) {
+		boolean result = false;
+		boolean isInteger = false;
+		boolean dateInRange = false;
+		int dayInt;
+		int monthInt;
+		int yearInt;
+		
+		try {
+			dayInt = Integer.parseInt(day);
+			monthInt = Integer.parseInt(month);
+			yearInt = Integer.parseInt(year);
+			isInteger = true;
+			
+			// check if date is in range:
+			if (((dayInt > 0) && (dayInt < 32)) && ((monthInt > 0) && (monthInt < 13)) && 
+					((yearInt > 1900) && (yearInt < 2015))) {
+				dateInRange = true;
+			}
+			
+		} catch (NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+		}
+		
+		if ((isInteger == true) && (dateInRange == true)) {
+			result = true;
+		} else {
+			result = false;
+		}
+		
+		return result;
+	} // end of isDateValid method
+	
+	private void displayCarInfo(String manufacturer, String model, String day, String month,
+								String year, String engineSize, String emissions) {
+		int dayInt = Integer.parseInt(day);
+		int monthInt = Integer.parseInt(month);
+		int yearInt = Integer.parseInt(year);
+		float engineSizeFloat = Integer.parseInt(engineSize);
+		int emissionsInt = Integer.parseInt(emissions);
+		
+		Car myCar = new Car(manufacturer, model, dayInt, monthInt, yearInt, engineSizeFloat, emissionsInt);
+		String info = myCar.toString();
+		//System.out.println(message);
+		JOptionPane.showMessageDialog(Assignment5App.this, info, "Car Information", JOptionPane.INFORMATION_MESSAGE);
+	} // end of displayCarInfo method
+	
+	private void displayVanInfo(String manufacturer, String model, String day, String month,
+								String year, String weight) {
+		int dayInt = Integer.parseInt(day);
+		int monthInt = Integer.parseInt(month);
+		int yearInt = Integer.parseInt(year);
+		float weightFloat = Float.parseFloat(weight);
+		
+		Van myVan = new Van(manufacturer, model, dayInt, monthInt, yearInt, weightFloat);
+		String info = myVan.toString();
+		JOptionPane.showMessageDialog(Assignment5App.this, info, "Van Information", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	
+	private void displayMotorcycleInfo(String manufacturer, String model, String day, String month,
+										String year, String engineSize) {
+		int dayInt = Integer.parseInt(day);
+		int monthInt = Integer.parseInt(month);
+		int yearInt = Integer.parseInt(year);
+		float engineSizeFloat = Float.parseFloat(engineSize);
+		
+		Motorcycle myMotorcycle = new Motorcycle(manufacturer, model, dayInt, monthInt, yearInt, engineSizeFloat);
+		String info = myMotorcycle.toString();
+		JOptionPane.showMessageDialog(Assignment5App.this, info, "Motorcycle Information", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	// method to display invalid input message:
+	private void displayInvalidInputMsg(String msg) {
+		JOptionPane.showMessageDialog(Assignment5App.this, msg, "Invalid Input!", JOptionPane.WARNING_MESSAGE);
+	}
+
+}

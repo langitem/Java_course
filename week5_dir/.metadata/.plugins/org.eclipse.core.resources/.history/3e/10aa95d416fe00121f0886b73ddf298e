@@ -1,0 +1,12 @@
+
+public class Van extends Vehicle {
+	
+	private int weight;
+	
+	super ();
+	
+	public Van (String manufac, String mod ) {
+		
+	}
+
+}

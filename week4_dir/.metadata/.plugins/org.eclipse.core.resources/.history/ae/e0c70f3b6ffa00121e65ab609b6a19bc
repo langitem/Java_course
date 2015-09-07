@@ -1,0 +1,120 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class Assignment4JFrame extends JFrame {
+	
+	private JTextField initialVelocityJTextField; // field to enter initial velocity
+	private JTextField launchAngleJTextField; // field to enter launch angle
+	private JButton calculateJButton; // button user presses to perform calcuations
+	private JButton cancelJButton; // button user presses to exit program
+	
+	private JPanel assignment4JPanel;
+	private JLabel velocityJLabel;
+	private JLabel angleJLabel;
+	
+	Projectile myProjectile = new Projectile();
+	
+	// Assignment4JFrame constructor
+	public Assignment4JFrame() {
+		super("Assignment 4");
+		
+		// build panel to add textfields and buttons:
+		assignment4JPanel = new JPanel();
+		assignment4JPanel.setLayout(new GridLayout(3, 2));
+		
+		velocityJLabel = new JLabel("Initial Velocity (meters/second) ", SwingConstants.RIGHT);
+		assignment4JPanel.add(velocityJLabel);
+		initialVelocityJTextField = new JTextField(15);
+		assignment4JPanel.add(initialVelocityJTextField);
+		
+		angleJLabel = new JLabel("Launch Angle (0-90 degrees) ", SwingConstants.RIGHT);
+		assignment4JPanel.add(angleJLabel);
+		launchAngleJTextField = new JTextField(15);
+		assignment4JPanel.add(launchAngleJTextField);
+		
+		calculateJButton = new JButton("Calculate");
+		calculateJButton.setActionCommand("CALCULATE");
+		assignment4JPanel.add(calculateJButton);
+		cancelJButton = new JButton("Cancel");
+		cancelJButton.setActionCommand("CANCEL");
+		assignment4JPanel.add(cancelJButton);
+		
+		add(assignment4JPanel);
+		
+		// create new ButtonHandler for button event handling
+		ButtonHandler handler = new ButtonHandler();
+		calculateJButton.addActionListener(handler);
+		cancelJButton.addActionListener(handler);
+		
+	} // end of Assignment4JFrame constructor
+	
+	// inner class for button event handling
+	private class ButtonHandler implements ActionListener {
+		
+		// process button events
+		public void actionPerformed(ActionEvent event) {
+			
+			if (event.getActionCommand().equals("CALCULATE")) {
+				
+				String velocityString = initialVelocityJTextField.getText();
+				String launchAngleString = launchAngleJTextField.getText();
+				
+				if (isInputValid (velocityString, launchAngleString)) {
+					
+					double velocityDouble = Double.parseDouble(velocityString);
+					double launchAngleDouble = Double.parseDouble(launchAngleString);
+					myProjectile.setInitialVelocity(velocityDouble);
+					myProjectile.setLaunchAngle(launchAngleDouble);
+					
+					String answer = myProjectile.toString();
+					System.out.print(answer);
+					JOptionPane.showMessageDialog(Assignment4JFrame.this, answer, "Results", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
+				
+			} else if (event.getActionCommand().equals("CANCEL")) {
+				System.exit(0);
+			}
+			
+		} // end of actionPerformed method
+		
+	} // end of ButtonHandler
+	
+	private boolean isInputValid(String velocityString, String launchAngleString) {
+		boolean result = false;
+		double velocityDouble;
+		double angleDouble;
+		
+		try {
+			velocityDouble = Double.parseDouble(velocityString);
+			angleDouble = Double.parseDouble(launchAngleString);
+			if ((velocityDouble >= 0) && ((angleDouble <= 90) && (angleDouble >=0))) {
+				result = true;
+			} else {
+				result = false;
+				displayInvalidInputMsg("Invalid velocity or angle!");
+			}
+		} catch (NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			displayInvalidInputMsg("Invalid characters entered!");
+		} // end of try-catch block
+		
+		
+		return result;
+	} // end of isInputValid method
+	
+	// method to display invalid input message:
+	private void displayInvalidInputMsg(String msg) {
+		
+		JOptionPane.showMessageDialog(Assignment4JFrame.this, msg, "Invalid Input!", JOptionPane.WARNING_MESSAGE);
+	}
+	
+}

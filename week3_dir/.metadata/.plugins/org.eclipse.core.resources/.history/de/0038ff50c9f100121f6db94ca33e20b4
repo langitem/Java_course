@@ -1,0 +1,75 @@
+import javax.swing.JOptionPane;
+
+public class DQ2Application {
+	
+	private int monthNum;
+	private String monthString;
+	
+	// method to display welcome message
+	public void displayGreeting() {
+		JOptionPane.showMessageDialog(null, "Welcome! This program will ask you to give\n" +
+											"a number from 1-12, and will display the\n" +
+											"respective month");
+	}
+	
+	// method to get month number from user
+	public void getMonthNum() {
+		
+		Boolean isMonthNumInvalid = true;
+		
+		while (isMonthNumInvalid) {
+			
+			String monthNumString = JOptionPane.showInputDialog(null, "Please enter an integer from 1-12.",
+																"Month Number?", JOptionPane.QUESTION_MESSAGE);
+			
+			try {
+				monthNum = Integer.parseInt(monthNumString);
+				if ((monthNum < 1) || (monthNum > 12)) {
+					showWarningMessage();
+				} else
+					isMonthNumInvalid = false;
+			} catch (Exception e) {
+				showWarningMessage();
+			}
+			
+		} // end of while loop
+	} // end of getMonthNum method
+	
+	private void showWarningMessage() {
+		JOptionPane.showMessageDialog(null, "Please enter only an integer value from 1-12.",
+				"Invalid input", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void displayMonth () {
+		
+		// process monthNum using a case statement
+		switch (monthNum) {
+		case 1:
+			monthString = "January";
+		case 2:
+			monthString = "February";
+		case 3:
+			monthString = "March";
+		case 4:
+			monthString = "April";
+		case 5:
+			monthString = "May";
+		case 6:
+			monthString = "June";
+		case 7:
+			monthString = "July";
+		case 8:
+			monthString = "August";
+		case 9:
+			monthString = "September";
+		case 10:
+			monthString = "October";
+		case 11:
+			monthString = "November";
+		case 12:
+			monthString = "December";
+		}
+		
+	} // end of displayMonth method
+
+}

@@ -1,0 +1,14 @@
+import javax.swing.JOptionPane;
+
+public class assignment3Driver {
+	
+	public static void main(String[] args) {
+		Assignment3App myApp = new Assignment3App();
+		
+		myApp.greeting();
+		myApp.askUserForSideLengths();
+		myApp.displayTriangleType();
+	
+	}
+
+}

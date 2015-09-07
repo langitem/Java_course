@@ -1,0 +1,17 @@
+import javax.swing.JFrame;
+
+public class Assignment7Driver {
+	
+	public static void main(String[] args) {
+		//BallPanel panel = new BallPanel();
+		BlueBallPanel panel = new BlueBallPanel();
+		JFrame application = new JFrame("Assignment 7");
+		
+		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		application.setLocationRelativeTo(null);
+		application.add(panel);
+		application.setSize(500, 500);
+		application.setVisible(true);
+	}
+
+}

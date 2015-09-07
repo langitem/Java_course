@@ -1,0 +1,49 @@
+
+public class SwimmingPool {
+	
+	private int width;
+	private int length;
+	private int depth;
+	private int volume;
+	
+	// method to set width
+	public void setWidth(int w) {
+		width = w;
+	}
+	
+	// method to set length
+	public void setLength(int l) {
+		length = l;
+	}
+	
+	// method to set depth
+	public void setDepth(int d) {
+		depth = d;
+	}
+	
+	// method to set volume
+	public void setVolume(int w, int l, int d) {
+		volume = w * l * d * 1000;
+	}
+	
+	// method to get width
+	public int getWidth() {
+		return width;
+	}
+	
+	// method to get length
+	public int getLength() {
+		return length;
+	}
+	
+	// method to get depth
+	public int getDepth() {
+		return depth;
+	}
+	
+	// method to get volume
+	public int getVolume() {
+		return volume;
+	}
+	
+}

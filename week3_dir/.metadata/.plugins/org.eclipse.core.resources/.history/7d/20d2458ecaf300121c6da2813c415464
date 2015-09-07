@@ -1,0 +1,6 @@
+
+public class assignment3Driver {
+	
+	Assignment3App myApp = new Assignment3App();
+
+}

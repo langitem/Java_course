@@ -1,0 +1,83 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.DateFormat;
+
+public abstract class Vehicle {
+	protected String manufacturer;
+	protected String model;
+	protected Date registrationDate = null;
+	protected DateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+	
+	// no argument constructor
+	public Vehicle() {
+		manufacturer = "";
+		model = "";
+		
+	}
+	
+	// constructor with 3 arguments
+	public Vehicle(String manufac, String mod, int day, int month, int year) {
+		manufacturer = manufac;
+		model = mod;
+		
+		setRegistrationDate(day, month, year);
+		/*
+		String ddMMyyyy = Integer.toString(day) + Integer.toString(month) + Integer.toString(year);
+		try {
+			registrationDate = (Date) formatter.parse(ddMMyyyy);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		*/
+		
+	}
+	
+	public void setManufacturer(String manufact) {
+		manufacturer = manufact;
+	}
+	
+	public void setModel(String m) {
+		model = m;
+	}
+	
+	public void setRegistrationDate(int day, int month, int year ) {
+		
+		String monthString;
+		if (month < 10) {
+			monthString = "0" + Integer.toString(month);
+		} else {
+			monthString = Integer.toString(month);
+		}
+		
+		String ddMMyyyy = Integer.toString(day) + monthString + Integer.toString(year);
+
+		try {
+			registrationDate = (Date) formatter.parse(ddMMyyyy);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // end of setRegistrationDate method
+	
+	public String getRegistrationDateDDMMMMYYYY() {
+		String date = new SimpleDateFormat("dd-MMMM-yyyy").format(registrationDate);
+		
+		return date;
+	}
+	
+	public Date getRegistrationDateObject() {
+		return registrationDate;
+	}
+	
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	
+	public String getModel() {
+		return model;
+	}
+	
+	abstract float getTax();
+
+}

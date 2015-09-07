@@ -1,0 +1,41 @@
+import javax.swing.JOptionPane;
+
+public class DQ1Application {
+	
+	private double numDouble1 = 0;
+	private double numDouble2 = 0;
+	
+	// method to display welcome message
+	public void displayGreeting() {
+		JOptionPane.showMessageDialog(null, "Welcome, this program will ask you for 2 doubles\n" +
+											"and tell you which one is the greater of the two.");
+	}
+	
+	// method to get 2 doubles from the user:
+	public void getDoubles() {
+		
+		numDouble1 = getDoubleFromUser("Please enter the first double.");
+		
+	} // end of getDoubles method
+	
+	private double getDoubleFromUser(String msg) {
+		double number = 0;
+		Boolean stringIsNotADouble = true;
+		
+		while (stringIsNotADouble) {
+			String stringDouble = JOptionPane.showInputDialog(null, msg, JOptionPane.QUESTION_MESSAGE);
+			
+			try {
+				num1 = Double.parseDouble(stringDouble);
+				stringIsNotADouble = false;
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please enter a double only.", "Double Only", JOptionPane.WARNING_MESSAGE);
+			}
+			
+		} // end of while loop
+		
+		return number;
+		
+	} // end of getDoubleFromuser method
+
+}

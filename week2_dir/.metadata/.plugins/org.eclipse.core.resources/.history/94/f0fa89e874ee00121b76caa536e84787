@@ -1,0 +1,41 @@
+import javax.swing.JOptionPane;
+
+public class Assignment2App {
+	
+	float width;
+	float length;
+	
+	SwimmingPool myPool = new SwimmingPool();
+	
+	// method to display welcome message
+	public void greeting() {
+		JOptionPane.showMessageDialog(null, "Welcome! This program will ask you for dimensions of a swimming pool\n" +
+									  "and give you its volume and the time required to fill the pool.");
+	}
+	
+	// method to get pool dimensions for author
+	public void getPoolDimensions() {
+		
+		String widthString = JOptionPane.showInputDialog(null, "What is the width of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		width = Float.parseFloat(widthString);
+		myPool.setWidth(width);
+		
+		String lengthString = JOptionPane.showInputDialog(null, "What is the length of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		float length = Float.parseFloat(lengthString);
+		myPool.setLength(length);
+		
+		String depthString = JOptionPane.showInputDialog(null, "What is the depth of the pool in meters?", JOptionPane.QUESTION_MESSAGE);
+		float depth = Float.parseFloat(depthString);
+		myPool.setDepth(depth);
+			
+	} // end of getPoolDimensions method
+	
+	// method to show volume of pool
+	public void displayVolume() {
+		
+		String volumeMessage;
+		
+		
+	}
+
+}

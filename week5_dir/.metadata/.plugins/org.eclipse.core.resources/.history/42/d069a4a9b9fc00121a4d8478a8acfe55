@@ -1,0 +1,14 @@
+
+public class FullAddress extends ShortAddress {
+	
+	int houseNumber;
+	String street1Name;
+	String street2Name;
+	String cityName;
+	
+	// Constructor
+	public FullAddress(String first, String second, int phone) {
+		
+	}
+
+}

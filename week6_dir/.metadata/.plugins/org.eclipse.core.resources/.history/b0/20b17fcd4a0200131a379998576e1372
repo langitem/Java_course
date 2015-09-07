@@ -1,0 +1,109 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import java.util.Arrays;
+import java.util.Random;
+
+
+public class Week6DQ1App extends JFrame {
+	int arrayLength;
+	private JLabel arrayJLengthLabel;
+	private JTextField arrayLengthJTextField;
+	private JButton okJButton; // button user will press to enter the array length
+	private JButton cancelJButton;
+	
+	// constructor
+	public Week6DQ1App() {
+		super("Week 6 DQ1 by Emanuel Langit");
+		setLayout(new FlowLayout()); // set frame layout
+		
+		// construct label and textfield for integer to be entered
+		arrayJLengthLabel = new JLabel("Enter array length:");
+		add(arrayJLengthLabel);
+		arrayLengthJTextField = new JTextField(10);
+		add(arrayLengthJTextField);
+		
+		okJButton = new JButton("OK");
+		okJButton.setActionCommand("OK");
+		add(okJButton);
+		
+		cancelJButton = new JButton("Cancel");
+		cancelJButton.setActionCommand("CANCEL");
+		add(cancelJButton);
+		
+		ButtonHandler handler = new ButtonHandler();
+		okJButton.addActionListener(handler);
+		cancelJButton.addActionListener(handler);
+		
+	} // end of constructor
+	
+	// inner class for button event handling
+	private class ButtonHandler implements ActionListener {
+		
+		// handle button event
+		public void actionPerformed(ActionEvent event) {
+			
+			if (event.getActionCommand().equals("OK")) {
+				try {
+					String arrayLengthString = arrayLengthJTextField.getText();
+					arrayLength = Integer.parseInt(arrayLengthString);
+					if (arrayLength > 0) {
+						createArray(arrayLength);
+					} else {
+						displayInvalidInputMsg();
+					}
+					
+				} catch (NumberFormatException e) {
+					System.err.printf("\nException: %s\n", e);
+					displayInvalidInputMsg();
+				} // end of try-catch block
+				
+			} else if (event.getActionCommand().equals("CANCEL")) {
+				System.exit(0);
+			}
+		} // end of actionPerformed method
+	}
+	
+	// method to display invalid input message:
+	private void displayInvalidInputMsg() {
+		
+		JOptionPane.showMessageDialog(Week6DQ1App.this, "Please enter positive integers only.",
+										"Invalid Input!", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	private void createArray(int length) {
+		int[] integerArray= new int[length];
+		Random randomNumbers = new Random(); // random number generator
+		int randomInteger; // stores each random integer generated
+		String arrayContents = "";
+		String evenIntegers = "";
+		
+		// fill array with random integers:
+		for (int i = 0; i < integerArray.length; i++) {
+			randomInteger = randomNumbers.nextInt();
+			integerArray[i] = randomInteger;
+			System.out.println(integerArray[i]);
+			arrayContents += String.format("Element %d: %d\n", i, integerArray[i]);
+		}
+		
+		// JOptionPane.showMessageDialog(Week6DQ1App.this, arrayContents, "Array Contents", JOptionPane.INFORMATION_MESSAGE);
+		
+		System.out.println("Even integers:");
+		for (int i = 0; i < integerArray.length; i++) {
+			if (integerArray[i]%2 == 0) {
+				evenIntegers += String.format("Element %d: %d\n", i, integerArray[i]);
+			}
+		}
+		
+		String results = "Array contents:\n" + arrayContents + "\nEven integers:\n" + evenIntegers;
+		JOptionPane.showMessageDialog(Week6DQ1App.this, results, "Even integers", JOptionPane.INFORMATION_MESSAGE);
+		
+	} // end of createArray method
+
+}

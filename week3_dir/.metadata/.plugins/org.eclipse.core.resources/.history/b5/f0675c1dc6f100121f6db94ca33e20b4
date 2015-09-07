@@ -1,0 +1,33 @@
+import javax.swing.JOptionPane;
+
+public class DQ2Application {
+	
+	private int monthNum;
+	
+	// method to display welcome message
+	public void displayGreeting() {
+		JOptionPane.showMessageDialog(null, "Welcome! This program will ask you to give\n" +
+											"a number from 1-12, and will display the\n" +
+											"respective month");
+	}
+	
+	// method to get month number from user
+	public void getMonthNum() {
+		
+		Boolean isMonthNumInvalid = true;
+		
+		while (isMonthNumInvalid) {
+			
+			String monthNumString = JOptionPane.showInputDialog(null, "Please enter an integer from 1-12.",
+																"Month Number?", JOptionPane.QUESTION_MESSAGE);
+			
+			try {
+				monthNum = Integer.parseInt(monthNumString);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please enter only an integer value from 1-12.", "Invalid input", JOptionPane.WARNING_MESSAGE);
+			}
+			
+		} // end of while loop
+	}
+
+}

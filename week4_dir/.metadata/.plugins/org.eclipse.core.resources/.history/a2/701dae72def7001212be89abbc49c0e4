@@ -1,0 +1,21 @@
+// Emanuel Langit
+// emanuel.langit@my.ohecampus.com
+// CKIT-510
+// Week4DQ1Driver.java
+// Driver class class for DQ1
+// Week 4 DQ1
+// July 29, 2013
+
+import javax.swing.JFrame;
+
+public class Week4DQ1Driver {
+	
+	public static void main(String[] args) {
+		DollarToGbpJFrame myFrame = new DollarToGbpFrame(); // create frame
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setLocationRelativeTo(null);
+		myFrame.setSize(275, 110);
+		myFrame.setVisible(true);
+	}
+
+}

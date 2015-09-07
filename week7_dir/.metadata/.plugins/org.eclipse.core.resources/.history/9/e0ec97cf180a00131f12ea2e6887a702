@@ -1,0 +1,15 @@
+import java.awt.Color;
+import javax.swing.JPanel;
+
+
+public class Ball extends JPanel implements Runnable {
+	
+	private int diameter = 10; // default diameter of 10
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

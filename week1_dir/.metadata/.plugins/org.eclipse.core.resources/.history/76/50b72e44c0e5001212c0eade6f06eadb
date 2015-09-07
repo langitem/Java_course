@@ -1,0 +1,15 @@
+
+public class DQ1_test {
+	
+	public static void main(String[] args) {
+		
+		// create DQ1 object and assign it to myDQ1
+		DQ1 myDQ1 = new DQ1();
+		
+		myDQ1.displayWelcomeMessage();
+		myDQ1.askForName();
+		myDQ1.askForBirthday();
+		myDQ1.displayNameAndBirthday();
+	}
+
+}

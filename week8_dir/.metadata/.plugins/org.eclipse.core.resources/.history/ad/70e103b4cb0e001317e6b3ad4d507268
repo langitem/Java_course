@@ -1,0 +1,10 @@
+import javax.swing.JFrame;
+
+public class Assignment8Driver {
+	
+	public static void main(String[] args) {
+		Assignment8Frame myAssignment8Frame = new Assignment8Frame(); // create Assignment8Frame
+		myAssignment8Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}

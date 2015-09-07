@@ -1,0 +1,11 @@
+import javax.swing.JFrame;
+
+public class Week4DQ2Driver {
+	
+	public static void main(String[] args) {
+		
+		Week4DQ2Frame myFrame = new Week4DQ2Frame();
+		
+	}
+
+}

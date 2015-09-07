@@ -1,0 +1,10 @@
+
+public class DQ2Driver {
+	
+	public static void main(String[] args) {
+		DQ2Application myDQ2Application = new DQ2Application();
+		
+		myDQ2Application.displayGreeting();
+	}
+
+}

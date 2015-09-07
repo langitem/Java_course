@@ -1,0 +1,14 @@
+import javax.swing.JFrame;
+
+public class Week4DQ2Driver {
+	
+	public static void main(String[] args) {
+		
+		Week4DQ2Frame myFrame = new Week4DQ2Frame();
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setLocationRelativeTo(null);
+		myFrame.setSize(275, 110);
+		myFrame.setVisible(true);
+	}
+
+}

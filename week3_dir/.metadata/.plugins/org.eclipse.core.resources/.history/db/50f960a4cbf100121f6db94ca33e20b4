@@ -1,0 +1,15 @@
+
+public class DQ2Driver {
+	
+	public static void main(String[] args) {
+		
+		DQ2Application myDQ2App = new DQ2Application();
+		
+		myDQ2App.displayGreeting();
+		myDQ2App.getMonthNum();
+		myDQ2App.displayMonth();
+		
+		System.exit(0);
+	}
+
+}

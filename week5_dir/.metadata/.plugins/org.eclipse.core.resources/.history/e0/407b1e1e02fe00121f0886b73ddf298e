@@ -1,0 +1,15 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+
+public class TestDateClass {
+	public static void main(String[] args ) throws ParseException {
+		
+		DateFormat formatter = null;
+		Date convertedDate = null;
+		
+		String ddMMyyyy = "25021972";
+		
+		
+	}
+}

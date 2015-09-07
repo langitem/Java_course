@@ -1,0 +1,53 @@
+
+public class ShortAddress {
+	
+	protected String firstName;
+	protected String secondName;
+	protected int phoneNumber;
+	
+	// no argument constructor
+	public ShortAddress() {
+		firstName = "";
+		secondName = "";
+		phoneNumber = 0;
+	}
+	
+	// Constructor
+	public ShortAddress(String first, String second, int num) {
+		firstName = first;
+		secondName = second;
+		phoneNumber = num;
+	}
+	
+	public void setFirstName(String fName) {
+		firstName = fName;
+	}
+	
+	public void setSecondName(String sName) {
+		secondName = sName;
+	}
+	
+	public void setPhoneNumber(int number) {
+		phoneNumber = number;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getSecondName() {
+		return secondName;
+	}
+	
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+	
+	public String toString() {
+		return String.format("%s: %s\n%s: %s\n%s: %s",
+				"First Name", firstName,
+				"Second Name", secondName,
+				"Phone Number", phoneNumber);
+	}
+
+}

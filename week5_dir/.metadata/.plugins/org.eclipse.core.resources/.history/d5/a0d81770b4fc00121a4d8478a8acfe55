@@ -1,0 +1,20 @@
+
+public class ShortAddress {
+	
+	private String firstName;
+	private String secondName;
+	private int phoneNumber;
+	
+	public void setFirstName(String fName) {
+		firstName = fName;
+	}
+	
+	public void setSecondName(String sName) {
+		secondName = sName;
+	}
+	
+	public void setPhoneNumber(int number) {
+		phoneNumber = number;
+	}
+
+}

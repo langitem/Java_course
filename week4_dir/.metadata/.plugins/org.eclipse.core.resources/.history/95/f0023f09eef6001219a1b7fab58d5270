@@ -1,0 +1,10 @@
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class DollarAmountTest {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

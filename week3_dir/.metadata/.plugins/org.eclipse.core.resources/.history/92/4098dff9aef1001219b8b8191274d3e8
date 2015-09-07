@@ -1,0 +1,15 @@
+
+public class DQ1Driver {
+	
+	public static void main(String[] args) {
+		
+		DQ1Application myDQ1App = new DQ1Application();
+		
+		myDQ1App.displayGreeting();
+		myDQ1App.getDoubles();
+		myDQ1App.displayResult();
+		
+		System.exit(0);
+	}
+
+}

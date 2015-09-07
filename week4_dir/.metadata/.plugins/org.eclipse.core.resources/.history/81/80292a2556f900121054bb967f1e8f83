@@ -1,0 +1,10 @@
+import javax.swing.JFrame;
+
+public class Assignment4Driver {
+	
+	public static void main(String[] args) {
+		Assignment4JFrame myJFrame = new Assignment4JFrame();
+		Assignment4JFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}

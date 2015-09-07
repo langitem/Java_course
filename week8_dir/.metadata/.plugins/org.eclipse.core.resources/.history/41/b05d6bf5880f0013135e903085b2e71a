@@ -1,0 +1,7 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Assignment8Line extends Assignment8Shape {
+	
+
+}

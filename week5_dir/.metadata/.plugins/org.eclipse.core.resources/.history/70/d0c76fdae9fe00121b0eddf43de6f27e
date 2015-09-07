@@ -1,0 +1,11 @@
+import javax.swing.JFrame;
+
+public class Assignment5Driver {
+	public static void main(String[] args) {
+		Assignment5App myApp = new Assignment5App();
+		myApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myApp.setSize(550, 300 );
+		myApp.setVisible(true);
+	}
+
+}

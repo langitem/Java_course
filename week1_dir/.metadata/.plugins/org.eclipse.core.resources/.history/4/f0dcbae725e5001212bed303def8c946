@@ -1,0 +1,13 @@
+
+public class GradeBookTest {
+	
+	public static void main(String[] args) {
+		
+		// create a GradeBook object and assign it to myGradeBook
+		GradeBook myGradeBook = new GradeBook();
+		
+		// call myGradebook's display message method:
+		myGradeBook.displayMessage();
+	}
+
+}

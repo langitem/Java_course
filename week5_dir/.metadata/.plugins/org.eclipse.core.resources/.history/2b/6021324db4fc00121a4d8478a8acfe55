@@ -1,0 +1,8 @@
+
+public class ShortAddress {
+	
+	private String firstName;
+	private String secondName;
+	private int phoneNumber;
+
+}

@@ -1,0 +1,13 @@
+
+public class DQ1Driver {
+	
+	public static void main(String[] args) {
+		
+		DQ1Application myDQ1App = new DQ1Application();
+		
+		myDQ1App.displayGreeting();
+		
+		System.exit(0);
+	}
+
+}

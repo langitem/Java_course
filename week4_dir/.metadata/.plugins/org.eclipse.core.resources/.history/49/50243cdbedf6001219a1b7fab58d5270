@@ -1,0 +1,12 @@
+import java.math.BigDecimal;
+
+public class Dollar {
+	
+	BigDecimal dollarAmount;
+	
+	public void setDollarAmount(BigDecimal amount) {
+		dollarAmount = amount;
+	}
+
+
+}

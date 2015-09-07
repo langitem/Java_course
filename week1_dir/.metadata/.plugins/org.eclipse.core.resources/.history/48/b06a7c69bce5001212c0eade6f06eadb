@@ -1,0 +1,14 @@
+
+public class DQ1_test {
+	
+	public static void main(String[] args) {
+		
+		DQ1 myDQ1 = new DQ1();
+		
+		myDQ1.showWelcomeMessage();
+		myDQ1.askForName();
+		myDQ1.askForBirthday();
+		myDQ1.displayNameAndBirthday();
+	}
+
+}

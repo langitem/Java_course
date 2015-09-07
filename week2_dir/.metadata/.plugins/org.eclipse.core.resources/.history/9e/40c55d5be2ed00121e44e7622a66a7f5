@@ -1,0 +1,25 @@
+
+public class swimmingPool {
+	
+	private int width;
+	private int length;
+	private int depth;
+	
+	// method to set width
+	public void setWidth(int w) {
+		width = w;
+	}
+	
+	// method to set length
+	public void setLength(int l) {
+		length = l;
+	}
+	
+	// method to set depth
+	public void setDepth(int d) {
+		depth = d;
+	}
+	
+	
+
+}

@@ -1,0 +1,244 @@
+// Emanuel Langit
+// emanuel.langit@my.ohecampus.com
+// CKIT-510
+// Week5DQApp.java
+// Application class for DQ
+// Week 5 DQ
+// August 4, 2013
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
+
+public class Week5DQApp extends JFrame {
+	
+	private JLabel firstNameJLabel;
+	private JLabel secondNameJLabel;
+	private JLabel phoneJLabel;
+	private JLabel houseNumJLabel;
+	private JLabel street1JLabel;
+	private JLabel street2JLabel;
+	private JLabel cityJLabel;
+	
+	private JTextField firstNameJTextField;
+	private JTextField secondNameJTextField;
+	private JTextField phoneJTextField;
+	private JTextField houseNumJTextField;
+	private JTextField street1JTextField;
+	private JTextField street2JTextField;
+	private JTextField cityJTextField;
+	
+	private JRadioButton shortJRadioButton;
+	private JRadioButton longJRadioButton;
+	private ButtonGroup radioGroup;
+	private String radioButtonPressed = "Short address";
+	
+	private JButton viewJButton;
+	private JButton cancelJButton;
+	
+	private JPanel week5DQJPanel;
+	
+	// Constructor
+	public Week5DQApp () {
+		super("Week 5 DQ");
+		//setLayout(new FlowLayout()); // set frame layout
+		
+		// Construct JLabels:
+		firstNameJLabel = new JLabel("First Name: ", SwingConstants.RIGHT);
+		secondNameJLabel = new JLabel("Second Name: ", SwingConstants.RIGHT);
+		phoneJLabel = new JLabel("Phone number (Numbers only): ", SwingConstants.RIGHT);
+		houseNumJLabel = new JLabel("House number: (Numbers only) ", SwingConstants.RIGHT);
+		street1JLabel = new JLabel("Street 1: ", SwingConstants.RIGHT);
+		street2JLabel = new JLabel("Street 2 (Optional): ", SwingConstants.RIGHT);
+		cityJLabel = new JLabel("City: ", SwingConstants.RIGHT);
+		
+		// Construct textfields:
+		firstNameJTextField = new JTextField(20);
+		secondNameJTextField = new JTextField(20);
+		phoneJTextField = new JTextField(20);
+		houseNumJTextField = new JTextField(20);
+		street1JTextField = new JTextField(20);
+		street2JTextField = new JTextField(20);
+		cityJTextField  = new JTextField(20);
+		
+		// create radio buttons
+		shortJRadioButton = new JRadioButton("Short address", true);
+		longJRadioButton = new JRadioButton("Long address", false);	
+		radioGroup = new ButtonGroup();
+		radioGroup.add(shortJRadioButton);
+		radioGroup.add(longJRadioButton);
+		
+		// create buttons to either view or cancel operation
+		viewJButton = new JButton("View Address");
+		viewJButton.setActionCommand("VIEW ADDRESS");
+		cancelJButton = new JButton("Cancel");
+		cancelJButton.setActionCommand("CANCEL");
+		
+		// build panel to add components:
+		week5DQJPanel = new JPanel();
+		week5DQJPanel.setLayout(new GridLayout(9,2));
+		
+		week5DQJPanel.add(firstNameJLabel);
+		week5DQJPanel.add(firstNameJTextField);
+		week5DQJPanel.add(secondNameJLabel);
+		week5DQJPanel.add(secondNameJTextField);
+		week5DQJPanel.add(phoneJLabel);
+		week5DQJPanel.add(phoneJTextField);
+		week5DQJPanel.add(houseNumJLabel);
+		week5DQJPanel.add(houseNumJTextField);
+		week5DQJPanel.add(street1JLabel);
+		week5DQJPanel.add(street1JTextField);
+		week5DQJPanel.add(street2JLabel);
+		week5DQJPanel.add(street2JTextField);
+		week5DQJPanel.add(cityJLabel);
+		week5DQJPanel.add(cityJTextField);
+		
+		week5DQJPanel.add(shortJRadioButton);
+		week5DQJPanel.add(longJRadioButton);
+		
+		week5DQJPanel.add(viewJButton);
+		week5DQJPanel.add(cancelJButton);
+		
+		add(week5DQJPanel);
+		
+		// Register a listener for the radio buttons.
+		// RadioButtonHandler myListener = new RadioButtonHandler();
+		// shortJRadioButton.addItemListener(myListener);
+		
+		// Register a listener for the radio buttons.
+		RadioListener myRadioListener = new RadioListener();
+		shortJRadioButton.addActionListener(myRadioListener);
+		longJRadioButton.addActionListener(myRadioListener);
+		
+		// Register button handler for event handling
+		ButtonHandler handler = new ButtonHandler();
+		viewJButton.addActionListener(handler);
+		cancelJButton.addActionListener(handler);
+		
+		
+		
+	} // end constructor
+	
+	// private inner class to handle radio button events
+	private class RadioListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			//System.out.println(event.getActionCommand());
+			radioButtonPressed = event.getActionCommand();
+			
+		}
+	} // end of RadioListener class
+	
+	// private inner class for button event handling
+	private class ButtonHandler implements ActionListener {
+		
+		public void actionPerformed(ActionEvent event) {
+			
+			if (event.getActionCommand().equals("VIEW ADDRESS")) {
+				// use trim method to remove leading and trailing white spaces
+				String firstNameString = firstNameJTextField.getText().trim();
+				String secondNameString = secondNameJTextField.getText().trim();
+				String phoneString = phoneJTextField.getText().trim();
+				String houseNumString = houseNumJTextField.getText().trim();
+				String street1String = street1JTextField.getText().trim();
+				String street2String = street2JTextField.getText().trim();
+				String cityString = cityJTextField.getText().trim();
+				long phoneNumberLong;
+				int houseNumInt;
+
+				if (isAllInputValid(firstNameString, secondNameString, phoneString,
+										houseNumString, street1String, cityString)) {
+					
+					phoneNumberLong = Long.parseLong(phoneString);
+					houseNumInt = Integer.parseInt(houseNumString);
+					
+					if (radioButtonPressed.contentEquals("Short address")) {
+						ShortAddress myShortAddress = new ShortAddress(firstNameString, secondNameString,
+																		phoneNumberLong);
+						JOptionPane.showMessageDialog(Week5DQApp.this, myShortAddress.toString(),
+														"Short Address", JOptionPane.INFORMATION_MESSAGE);
+				
+					} else if (radioButtonPressed.contentEquals("Long address")) {
+						
+						FullAddress myFullAddress = new FullAddress(firstNameString, secondNameString,
+																	phoneNumberLong, houseNumInt, street1String,
+																	street2String, cityString);
+						JOptionPane.showMessageDialog(Week5DQApp.this, myFullAddress.toString(), "Full Address",
+														JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+				} // end of checking if all inputs are valid block
+				
+			} else if (event.getActionCommand().equals("CANCEL")) {
+				System.exit(0);
+			} // end of 
+		} // end of actionPerformed method
+	} // end of ButtonHandler class
+	
+	private boolean isAllInputValid(String fName, String secName, String phone,
+									String houseNum, String street1, String city) {
+		boolean result = false;
+		boolean anyFieldsEmpty;
+		boolean houseNumValid;
+		boolean phoneNumValid;
+		String errorMessage = "";
+		
+		// check if any text fields are empty, except for street2
+		if ((fName.isEmpty()) || (secName.isEmpty()) || (phone.isEmpty()) ||
+				(houseNum.isEmpty()) || (street1.isEmpty()) || (city.isEmpty()) ) {
+			anyFieldsEmpty = true;
+			errorMessage += "There are missing fields.\n";
+		} else {
+			anyFieldsEmpty = false;
+		}
+		
+		// check if house number is numeric
+		try {
+			Integer.parseInt(houseNum);
+			houseNumValid = true;
+		} catch (NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			houseNumValid = false;
+			errorMessage += "Please use numbers only for house number.\n";
+		}
+		
+		// check if phone number is valid:
+		try {
+			//Integer.parseInt(phone);
+			Long.parseLong(phone);
+			phoneNumValid = true;
+		} catch (NumberFormatException e) {
+			System.err.printf("\nException: %s\n", e);
+			phoneNumValid = false;
+			errorMessage += "Please use numbers only for phone number.\n";
+		}
+		
+		// if anything is invalid, return false, and display warning message
+		if ((anyFieldsEmpty == true) || (houseNumValid == false) || (phoneNumValid == false)) {
+			result = false;
+			displayInvalidInputMsg(errorMessage);
+		} else {
+			result = true;
+		}
+		
+		return result;
+	} // end of isAllInputValid method
+	
+	// method to display invalid input message:
+	private void displayInvalidInputMsg(String msg) {
+		JOptionPane.showMessageDialog(Week5DQApp.this, msg, "Invalid Input!", JOptionPane.WARNING_MESSAGE);
+	}
+
+}

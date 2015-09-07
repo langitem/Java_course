@@ -1,0 +1,28 @@
+import java.awt.Color;
+
+public class Ball implements Runnable {
+	
+	private int diameter = 10; // default diameter of 10
+	private Color myColor;
+	private int x1;
+	private int y1;
+	private int x2;
+	private int y2;
+
+	
+	// no argument constructor to set color to blue:
+	public Ball() {
+		myColor = Color.BLUE;
+		x1 = 0;
+		y1 = 0;
+		x2 = 0;
+		y2 = 0;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

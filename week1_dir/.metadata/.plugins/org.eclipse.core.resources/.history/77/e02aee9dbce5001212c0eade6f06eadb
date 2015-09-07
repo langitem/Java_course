@@ -1,0 +1,37 @@
+import javax.swing.*;
+
+public class DQ1 {
+	
+	private String userName;
+	private String birthday;
+	
+	// method to set userName
+	public void setUserName(String name) {
+		userName = name;
+	}
+	
+	// method to retrieve userName
+	public String getUserName() {
+		return userName;
+	}
+	
+	// method to display a welcome message
+	public void displayWelcomeMessage() {
+		JOptionPane.showMessageDialog(null, "Welcome to the DQ1 program.");
+	}
+	
+	// method to get user's name
+	public void askForName() {
+		userName = JOptionPane.showInputDialog("What's your name? ");
+		// JOptionPane.showMessageDialog(null, "Hi " + userName);
+	}
+	
+	public void askForBirthday() {
+		birthday = JOptionPane.showInputDialog(null, "When is your birthday? ");
+	}
+	
+	public void displayNameAndBirthday () {
+		JOptionPane.showMessageDialog(null, "Hi " + userName + "\nYour birthday is on: " + birthday);
+	}
+
+}

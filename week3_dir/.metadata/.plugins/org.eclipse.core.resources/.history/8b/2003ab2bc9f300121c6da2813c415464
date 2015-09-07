@@ -1,0 +1,29 @@
+
+public class Triangle {
+	
+	private float side1;
+	private float side2;
+	private float side3;
+	
+	// no argument constructor
+	public Triangle() {
+		this(0, 0, 0); // initialize all 3 instance variables
+	}
+	
+	// constructor with all sides supplied
+	public Triangle(float initialSide1, float initialSide2, float initialSide3) {
+		side1 = initialSide1;
+		side2 = initialSide2;
+		side3 = initialSide3;
+	}
+	
+	// setters for instance variables:
+	public void setSide1(float length) {
+		side1 = length;
+	}
+	
+	
+	
+	
+
+}

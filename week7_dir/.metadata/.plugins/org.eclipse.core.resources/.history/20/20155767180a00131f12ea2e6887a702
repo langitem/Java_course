@@ -1,0 +1,27 @@
+import java.awt.Color;
+
+
+public class Ball implements Runnable {
+	
+	private int x1;
+	private int y1;
+	private int x2;
+	private int y2;
+	private Color myColor;
+	
+	// no argument constructor that sets all coordinates of the ball
+	public Ball() {
+		myColor = Color.BLUE;
+		x1 = 0;
+		y1 = 0;
+		x2 = 0;
+		y2 = 0;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

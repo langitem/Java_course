@@ -1,0 +1,97 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Ball {
+	
+	private int diameter; // default diameter of 10
+	private Color myColor;
+	private int x1;
+	private int y1;
+	private int changeInX;
+	private int changeInY;
+
+	
+	// no argument constructor to set color to blue:
+	public Ball() {
+		myColor = Color.BLUE;
+		x1 = 0;
+		y1 = 0;
+		changeInX = 1;
+		changeInY = 1;
+		diameter = 50;
+	}
+	
+	// constructor that initializes the coordinates and color to the values of the
+	// arguments supplied
+	public Ball(int x1, int y1, int changeInX, int changeInY, int diameter, Color myColor) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.changeInX = changeInY;
+		this.changeInY = changeInY;
+		this.diameter = diameter;
+		this.myColor = myColor;
+	}
+	
+	public void setX1(int x1) {
+		if (x1 >= 0) {
+			this.x1 = x1;
+		} else {
+			this.x1 = 0;
+		}
+	}
+	
+	public int getX1() {
+		return x1;
+	}
+	
+	public void setY1(int y1) {
+		if ( y1 >= 0 ) {
+			this.y1 = y1;
+		} else {
+			this.y1 = 0;
+		}
+	}
+	
+	public int getY1() {
+		return y1;
+	}
+	
+	public void setchangeInX(int changeInX) {
+		if ( changeInX >= 0 ) {
+			this.changeInX = changeInX;
+		} else {
+			this.changeInX = 0;
+		}
+	}
+	
+	public int getchangeInX() {
+		return changeInX;
+	}
+	
+	public void setchangeInY(int changeInY) {
+		if ( changeInY >= 0 ) {
+			this.changeInY = changeInY;
+		} else {
+			this.changeInY = 0;
+		}
+	}
+	
+	public int getchangeInY() {
+		return changeInY;
+	}
+	
+	public void setColor (Color color) {
+		myColor = color;
+	}
+	
+	public Color getColor () {
+		return myColor;
+	}
+	
+	public void draw(Graphics g) {
+		g.setColor(getColor());
+		g.drawOval(getX1(), getY1(), diameter, diameter);
+		g.fillOval(getX1(), getY1(), diameter, diameter);
+	}
+
+}

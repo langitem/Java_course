@@ -1,0 +1,24 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+
+public class Ball extends JPanel implements Runnable {
+	
+	private int diameter = 10; // default diameter of 10
+	
+	// draw circle of specified diameter
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D)g;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

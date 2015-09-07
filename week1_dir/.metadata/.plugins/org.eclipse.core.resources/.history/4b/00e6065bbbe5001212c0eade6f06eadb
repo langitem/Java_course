@@ -1,0 +1,22 @@
+import javax.swing.*;
+
+public class DQ1 {
+	
+	private String userName;
+	
+	// method to set userName
+	public void setUserName(String name) {
+		userName = name;
+	}
+	
+	// method to retrieve userName
+	public String getUserName() {
+		return userName;
+	}
+	
+	// method to get user's name
+	public void showWelcomeMessage() {
+		JOptionPane.showMessageDialog(null, "Welcome to the DQ1 assignment.");
+	}
+
+}

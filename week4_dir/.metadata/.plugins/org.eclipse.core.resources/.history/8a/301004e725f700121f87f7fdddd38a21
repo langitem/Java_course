@@ -1,0 +1,10 @@
+import javax.swing.JFrame;
+
+public class Week4DQ1Driver {
+	
+	public static void main(String[] args) {
+		DollarToGbpFrame myFrame = new DollarToGbpFrame(); // create frame
+		
+	}
+
+}

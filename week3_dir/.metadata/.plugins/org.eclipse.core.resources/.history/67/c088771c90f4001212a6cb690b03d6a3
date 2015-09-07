@@ -1,0 +1,23 @@
+import javax.swing.JOptionPane;
+
+public class assignment3Driver {
+	
+	public static void main(String[] args) {
+		Assignment3App myApp = new Assignment3App();
+		String warningMessage = "Please enter only \"Y\" or \"N\"";
+		String runAgainAnswer = JOptionPane.showInputDialog(null, "Would you like to run again?\n" + 
+				"Please enter Y or N", JOptionPane.QUESTION_MESSAGE);
+		Boolean runAgain = true;
+		
+		myApp.greeting();
+		
+		while (runAgain) {
+			myApp.askUserForSideLengths();
+			myApp.displayTriangleType();
+			
+			runAgain = false;
+		}
+	
+	}
+
+}

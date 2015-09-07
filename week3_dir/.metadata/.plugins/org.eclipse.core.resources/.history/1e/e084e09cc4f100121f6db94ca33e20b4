@@ -1,0 +1,16 @@
+import javax.swing.JOptionPane;
+
+public class DQ2Application {
+	
+	private int monthNum;
+	
+	// method to display welcome message
+	public void displayGreeting() {
+		JOptionPane.showMessageDialog(null, "Welcome! This program will ask you to give" +
+											"a number from 1-12, and will display the" +
+											"respective month");
+	}
+	
+	
+
+}

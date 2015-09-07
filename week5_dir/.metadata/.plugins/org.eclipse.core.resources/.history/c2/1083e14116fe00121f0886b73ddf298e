@@ -1,0 +1,9 @@
+
+public class Van extends Vehicle {
+	
+	private int weight;
+	public Van () {
+		
+	}
+
+}

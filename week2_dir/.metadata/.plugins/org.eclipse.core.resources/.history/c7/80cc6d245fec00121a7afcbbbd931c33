@@ -1,0 +1,44 @@
+
+import javax.swing.JOptionPane;
+
+public class DQ2Application {
+	
+	private int distance = 0;
+	private int timeTraveled = 0;
+	private double speed = 0;
+	private String distanceString = "";
+	private String timeString = "";
+	private String speedString = "";
+	
+	// method to display greeting
+	public void displayGreeting() {
+		
+		JOptionPane.showMessageDialog(null, "Welcome, this program will calculate your speed");
+	}
+	
+	//method to get distance and time traveled
+	public void getInput() {
+		
+		distanceString = JOptionPane.showInputDialog(null, "Please enter the distance traveled in kilometers", JOptionPane.QUESTION_MESSAGE);
+		distance = Double.parseDouble(distanceString);
+		
+		timeString = JOptionPane.showInputDialog(null, "Please enter the time traveled in hours", JOptionPane.QUESTION_MESSAGE);
+		timeTraveled = Integer.parseInt(timeString);
+		
+		
+	} // end of getInput method
+	
+	public void displaySpeed() {
+		
+		
+	}
+	
+	private double calculateSpeed(int dist, int time) {
+		
+		double speed = dist/time;
+		
+		return speed;
+		
+	}
+
+}

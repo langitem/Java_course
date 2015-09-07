@@ -1,0 +1,25 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JPanel;
+
+
+public class Ball implements Runnable {
+	
+	private int diameter = 10; // default diameter of 10
+	private Color myColor;
+	
+	// no argument constructor to set color to blue:
+	public Ball() {
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

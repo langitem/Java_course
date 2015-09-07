@@ -1,0 +1,16 @@
+
+public class Wee6DQ1Driver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Week6DQ1App myApp = new Week6DQ1App();
+		myApp.setLocationRelativeTo(null);
+		myApp.setSize(275, 100);
+		myApp.setVisible(true);
+
+	}
+
+}

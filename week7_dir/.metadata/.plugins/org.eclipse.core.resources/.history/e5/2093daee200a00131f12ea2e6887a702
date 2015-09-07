@@ -1,0 +1,8 @@
+
+public class Assignment7Driver {
+	
+	public static void main(String[] args) {
+		BallPanel panel = new BallPanel();
+	}
+
+}

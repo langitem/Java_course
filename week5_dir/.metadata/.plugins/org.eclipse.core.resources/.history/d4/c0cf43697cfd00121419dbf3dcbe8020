@@ -1,0 +1,15 @@
+import javax.swing.JFrame;
+
+public class Week5DQDriver {
+	
+	public static void main(String[] args) {
+		
+		Week5DQApp myApp = new Week5DQApp();
+		myApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myApp.setLocationRelativeTo(null);
+		myApp.setSize(550, 300);
+		myApp.setVisible(true);
+		
+	}
+
+}

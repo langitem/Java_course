@@ -1,0 +1,44 @@
+import java.util.Date;
+
+
+public class Car extends Vehicle {
+	
+	private float engineSize;
+	private int co2Emission;
+	
+	public Car(String manufac, String mod, int ddmmyyyy, float size, int emission) {
+		super(manufac, mod, ddmmyyyy);
+		setEngineSize(size);
+		setCo2Emission(emission);
+	}
+	
+	public void setEngineSize(float size) {
+		engineSize = size;
+	}
+	
+	public void setCo2Emission(int emission) {
+		co2Emission = emission;
+	}
+	
+	public float getEngineSize() {
+		return engineSize;
+	}
+	
+	public int getCo2Emission() {
+		return co2Emission;
+	}
+
+	@Override
+	public float returnTax() {
+		Date cutOffDate = null;
+		final String cutOffDateDDMMYYYY = "01032001"; // 01-March-2001
+		
+		cutOffDate = (Date) formatter.parse(cutOffDateDDMMYYYY);
+		
+		int tax = 0;
+		
+		// TODO Auto-generated method stub
+		return tax;
+	}
+
+}

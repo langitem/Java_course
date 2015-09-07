@@ -1,0 +1,45 @@
+// Emanuel Langit
+// emanuel.langit@my.ohecampus.com
+// CKIT-510
+// DQ1Application.java
+// Application class for DQ1
+// DQ1
+// July 14, 2013
+
+import javax.swing.JOptionPane;
+
+public class DQ1Application {
+	
+	private float distanceInMeters;
+	private float distanceInKilometers;
+	
+	// method to display greeting
+	public void displayGreeting() {
+		JOptionPane.showMessageDialog(null, "Welcome, this program converts meters into kilometers");
+	} // end of displayGreeting method
+	
+	// method to get distance in meters
+	public void getDistanceInMeters() {
+		
+		String stringMeters = JOptionPane.showInputDialog(null, "Enter a distance in meters to be converted into kilometers", JOptionPane.QUESTION_MESSAGE);
+		distanceInMeters = Float.parseFloat(stringMeters);
+		
+	} // end of getDistanceInMeters method
+	
+	// method to display distance in kilometers
+	public void displayDistanceInKm() {
+		
+	}
+	
+	// method to convert meters into kilometers
+	private int convertMetersToKm(float meters) {
+		// divide meters by 1000 to convert into kilometers
+		float km = meters / 1000;
+		
+		// round km to nearest whole number
+		int kmRoundedToInteger = (int)(Math.round(km));
+		
+		return kmRoundedToInteger;
+	} // end of convertMetersToKm method
+
+} // end of DQ1Application class

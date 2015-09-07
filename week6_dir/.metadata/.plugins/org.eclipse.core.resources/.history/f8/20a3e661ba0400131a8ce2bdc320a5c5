@@ -1,0 +1,14 @@
+import javax.swing.JFrame;
+
+
+public class Assignment6Driver {
+	
+	public static void main(String[] args) {
+		Assignment6App myApp = new Assignment6App();
+		myApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myApp.setLocationRelativeTo(null);
+		myApp.setSize(650, 300);
+		myApp.setVisible(true);
+	}
+
+}

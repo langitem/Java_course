@@ -1,0 +1,16 @@
+
+public class Assignment2Driver {
+	
+	public static void main(String[] args) {
+		
+		Assignment2App myApp = new Assignment2App(); // create instance of Assignment2App
+		
+		myApp.greeting();
+		myApp.getPoolDimensions();
+		myApp.displayVolume();
+		myApp.displayFillTime();
+		
+		System.exit(0);
+	}
+
+}

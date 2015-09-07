@@ -1,0 +1,32 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JPanel;
+
+
+public class Ball extends JPanel implements Runnable {
+	
+	private int diameter = 10; // default diameter of 10
+	private int x1;
+	private int y1;
+	private int x2;
+	private int y2;
+	
+	
+	// draw circle of specified diameter
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.setColor(Color.blue);
+		Graphics2D g2d = (Graphics2D)g;
+		Ellipse2D.Double circle = new Ellipse2D.Double()
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

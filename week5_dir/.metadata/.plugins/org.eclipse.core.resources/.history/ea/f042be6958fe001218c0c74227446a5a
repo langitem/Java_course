@@ -1,0 +1,13 @@
+
+public class MotorcycleTest {
+	public static void main(String[] args) {
+		int day = 25;
+		int month = 2;
+		int year = 1972;
+		
+		Motorcycle myMotorcycle = new Motorcycle("Honda", "CBR", day, month, year, 350);
+		
+		tax = myMotorcycle.getTax();
+	}
+
+}

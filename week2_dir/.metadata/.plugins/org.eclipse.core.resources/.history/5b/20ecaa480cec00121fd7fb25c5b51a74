@@ -1,0 +1,9 @@
+
+public class DQ1Driver {
+	
+	public static void main(String[] args) {
+		
+		DQ1Application myDQ1Appliation = new DQ1Application();
+	}
+
+}

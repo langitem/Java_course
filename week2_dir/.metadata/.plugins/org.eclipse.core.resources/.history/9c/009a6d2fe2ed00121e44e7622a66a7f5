@@ -1,0 +1,10 @@
+
+public class swimmingPool {
+	
+	private int width;
+	private int length;
+	private int depth;
+	
+	
+
+}
